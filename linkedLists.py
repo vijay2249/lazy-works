@@ -29,10 +29,13 @@ class LinkedList:
   
   def add(self, val):
     new_Node = Node(val)
-    current = self.head
-    while current.getNext() is not None:
-      current = current.getNext()
-    current.setNext(new_Node)
+    if self.head is None:
+      self.head = new_Node
+    else:
+      current = self.head
+      while current.getNext() is not None:
+        current = current.getNext()
+      current.setNext(new_Node)
   
   def size(self):
     length = 0
@@ -115,3 +118,9 @@ class LinkedList:
     while current is not None:
       print(current.getData())
       current = current.getNext()
+
+
+ll = LinkedList()
+ll.add('i')
+ll.add("v")
+ll.printList()
