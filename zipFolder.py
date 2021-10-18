@@ -1,7 +1,21 @@
 # --------------------   START OF CODE   -----------------------------
 
 # import modules
-import os, zipfile, shutil, send2trash, argparse, sys
+try:
+  import os
+  import zipfile
+  import shutil
+  import send2trash
+  import argparse
+  import sys
+  import subprocess
+except:
+  if sys.platform in ['win32','cygwin']:
+    subprocess.check_output("python -m pip install --upgrade pip", shell=True)
+    subprocess.check_output("python -m pip install send2trash", shell=True)
+  else:
+    subprocess.check_output("pip install --upgrade pip", shell=True)
+    subprocess.check_output("pip install send2trash", shell=True)
 
 class Backup():
   # get folder or directory input from user
