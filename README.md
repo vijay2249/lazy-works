@@ -118,3 +118,9 @@ Also the password strength is checked for each password, if it is not a strong p
 
 ### Disclaimer:
 `ALL THE SITE NAMES AND PASSWORDS ARE CASE SENSITIVE`
+
+## [Extract Mails and Numbers from file](./ExtractNumbers_Mail.py)
+
+find you file location and then replace the inbuilt one with yours
+
+also dont forget to add one more backslash wherever there is backslash in your file location path

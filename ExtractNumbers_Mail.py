@@ -1,7 +1,7 @@
 import re
 # just replace the file location in here with you file location
 # also dont forget to add extra backslash where there is \ in the path
-f = open("<file location path>","r")
+f = open(input("Input file path: "),"r")
 # ex: C:\\Users\\User\\Desktop\\Example.py   or any type of file
 all_text = f.read()
 '''
