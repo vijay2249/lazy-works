@@ -109,22 +109,22 @@ first we import the zipfile module to read and write zip files and folders
 
 # -------------------  zipping a folder--------------
 # import os, zipfile
-# os.chdir("F:\\NITW_Study\\sem_2-1")
+# os.chdir("F:\\Study\\sem")
 # print(os.getcwd())
 
-# sem_2_1 = zipfile.ZipFile('F:\\NITW_Study\\sem_2_1.zip', 'w')
+# sem = zipfile.ZipFile('F:\\Study\\sem.zip', 'w')
 
-# for folder, subfolders, files in os.walk("F:\\NITW_Study\\sem_2-1"):
+# for folder, subfolders, files in os.walk("F:\\Study\\sem"):
 #   # print("Current folder: " + folder)
 #   # for subfolder in subfolders:
 #     # print("subfolder of " + folder + ": " + subfolder)
 #   for f in files:
 #     new_file = os.path.join(folder, f)
-#     sem_2_1.write(new_file)
-#     print("file in "+ folder + ": " + f + " added to sem_2_1.zip")
+#     sem.write(new_file)
+#     print("file in "+ folder + ": " + f + " added to sem.zip")
 #   print("\n")
 
-# sem_2_1.close()
+# sem.close()
 
 # ------------------- single folder --------------------
 
@@ -136,9 +136,42 @@ if any errors then create a new error folder and move the files to the error nam
 
 '''
 
-import os, zipfile, shutil, send2trash, argparse
+# import os, zipfile, shutil, send2trash, argparse
+try:
+  import os
+  import zipfile
+  import shutil
+  import send2trash
+  import argparse
+except:
+  if sys.platform in ['win32','cygwin']:
+    subprocess.check_output("python -m pip install --upgrade pip", shell=True)
+    subprocess.check_output("python -m pip install send2trash", shell=True)
+  else:
+    subprocess.check_output("pip install --upgrade pip", shell=True)
+    subprocess.check_output("pip install send2trash", shell=True)
 
-os.chdir("F:\\NITW_Study")
+def folderPathByUser():
+  folderInput = str(input("Enter folder path: "))
+  return folderInput
+
+def get_folder_path():
+  p = argparse.ArgumentParser(description="Input folder path to create a zip folder for it")
+  p.add_argument('-p', '--path', dest='path', help='Path for the folder to create a zip file of it')
+  options = p.parse_args()
+  if not options.path:
+    options.path = folderPathByUser()
+  return options
+
+userInput = get_folder_path()
+
+try:
+  os.chdir(userInput.path)
+except FileNotFoundError as error:
+  print(f"[-] {error}")
+  print("[-] Quitting the program")
+  sys.exit()
+# os.chdir("F:\\Study")
 print(os.getcwd())
 subFolders = []
 
@@ -185,10 +218,6 @@ print(errorFiles)
 
 
 # ------------------  end of code ---------------------------------------------
-
-'''private ip and public IP'''
-'''static public IP '''
-
 
 # ------------------------------   start of project ---------------------------------
 '''

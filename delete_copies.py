@@ -1,7 +1,15 @@
-import os
-import sys
-import hashlib
-import send2trash
+try:
+  import os
+  import sys
+  import hashlib
+  import send2trash
+except:
+  if sys.platform in ['win32','cygwin']:
+    subprocess.check_output("python -m pip install --upgrade pip", shell=True)
+    subprocess.check_output("python -m pip install send2trash", shell=True)
+  else:
+    subprocess.check_output("pip install --upgrade pip", shell=True)
+    subprocess.check_output("pip install send2trash", shell=True)
 
 def usage():
   print("[+] python file.py <folder1> <folder2> <folder3> delete -> to permanently delete the repeated files")

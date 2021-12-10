@@ -16,8 +16,19 @@ other os :- pip install pyperclip
 '''
 # sys module is to read the command line arguments
 
+# import shelve, pyperclip, sys
 
-import shelve, pyperclip, sys
+try:
+  import shelve
+  import pyperclip
+  import sys
+except:
+  if sys.platform in ['win32','cygwin']:
+    subprocess.check_output("python -m pip install --upgrade pip", shell=True)
+    subprocess.check_output("python -m pip install pyperclip", shell=True)
+  else:
+    subprocess.check_output("pip install --upgrade pip", shell=True)
+    subprocess.check_output("pip install pyperclip", shell=True)
 
 clipBoard = shelve.open('clip')
 

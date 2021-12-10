@@ -7,9 +7,29 @@
 # shelve module is used to store the variables in binary file
 # password_generator module is used to generate new strong password
 # cryptography module is used to encrypt and decrypt the passwords
-import re, sys, pyperclip, shelve
-from password_generator.password import Password
-from cryptography.fernet import Fernet
+
+# import re, sys, pyperclip, shelve
+# from password_generator.password import Password
+# from cryptography.fernet import Fernet
+
+try:
+  import re
+  import sys
+  import pyperclip
+  import shelve
+  from password_generator.password import Password
+  from cryptography.fernet import Fernet
+except:
+  if sys.platform in ['win32','cygwin']:
+    subprocess.check_output("python -m pip install --upgrade pip", shell=True)
+    subprocess.check_output("python -m pip install pyperclip", shell=True)
+    subprocess.check_output("python -m pip install password-generator-module", shell=True)
+    subprocess.check_output("python -m pip install cryptography", shell=True)
+  else:
+    subprocess.check_output("pip install --upgrade pip", shell=True)
+    subprocess.check_output("pip install pyperclip", shell=True)
+    subprocess.check_output("pip install password-generator-module", shell=True)
+    subprocess.check_output("pip install cryptography", shell=True)
 
 p = Password()
 locker = shelve.open("locker")
