@@ -117,7 +117,7 @@ Also the password strength is checked for each password, if it is not a strong p
 
 
 ### Disclaimer:
-`ALL THE SITE NAMES AND PASSWORDS ARE CASE SENSITIVE`
+_`ALL THE SITE NAMES AND PASSWORDS ARE CASE SENSITIVE`_
 
 ## [Extract Mails and Numbers from file](./ExtractNumbers_Mail.py)
 
