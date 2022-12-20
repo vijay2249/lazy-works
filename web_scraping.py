@@ -19,30 +19,29 @@
 
 #! python3
 
-import webbrowser
-import sys
-import pyperclip
-import argparse
-import time
+# import webbrowser
+# import sys
+# import pyperclip
+# import argparse
+# import time
 
 
-def get_input():
-  if len(sys.argv) > 1:
-    address = ' '.join(sys.argv[1:])
-    print(address)
-  else:
-    address = pyperclip.paste()
-  return address
+# def get_input():
+#     #get input from user
+#     if len(sys.argv) > 1:
+#         address = ' '.join(sys.argv[1:])
+#         print(address)
+#     else:
+#         #else get input from copied text
+#         address = pyperclip.paste()
+#     return str(address)
 
-start = time.time()
-count = 0
-# while time.time()-start < 5:
-try:
-  if webbrowser.open_new_tab("https://google.com/maps/place/" + get_input()):
-    count +=1
-  # webbrowser.open_new_tab()
-except Exception as error:
-  print("[-] Error\n\n")
-  print(error)
-  print("\n\n")
-print(count)
+# webbrowser.open_new_tab("https://google.com/maps/search/" + get_input())
+
+import requests
+res = requests.get('https://automatetheboringstuff.com/files/rj.txt')
+res.raise_for_status()
+playFile = open('RomeoJuilet.txt', 'wb')
+for chucks in res.iter_content(1000000):
+    playFile.write(chucks)
+playFile.close()
